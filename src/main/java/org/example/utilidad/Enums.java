@@ -8,6 +8,7 @@ public enum Enums {
     MONTO_COBERTURA("no cubrimos mas de 1500 palos"),
     MONTO_COBERTURA_FORMATO("solo puedes ingresar numeros aqui"),
     EDAD_ASEGURADO("el contacto que te proveemos para la afiliacion es: 3225108713"),
+    FECHA_INCORRECTA("Formato diferente al requerido"),
 
 
     ;

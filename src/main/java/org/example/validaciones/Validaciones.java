@@ -34,12 +34,12 @@ public class Validaciones {
     }
 
     public Boolean validarMontoCobertura(Double montoCobertura)throws Exception{
-        if (montoCobertura>1.500000000){
+        if (montoCobertura<0.00||montoCobertura>1500.00){
             throw new Exception(Enums.MONTO_COBERTURA.getMensaje());
         }
 
         String expresionRegular="^[0-9]+$";
-        if (!this.utilidades.buscarCoincidencia(expresionRegular, String.valueOf(montoCobertura))){
+        if (this.utilidades.buscarCoincidencia(expresionRegular, String.valueOf(montoCobertura))){
             throw new Exception(Enums.MONTO_COBERTURA_FORMATO.getMensaje());
         }
         return true;
@@ -54,6 +54,15 @@ public class Validaciones {
         String expresionRegular="^[0-9]+$";
         if (!this.utilidades.buscarCoincidencia(expresionRegular, String.valueOf(edadAsegurado))){
             throw new Exception(Enums.MONTO_COBERTURA_FORMATO.getMensaje());
+        }
+        return true;
+    }
+
+    public Boolean validarFecha(String fecha) throws Exception{
+
+        String expresionRegular="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
+        if (!this.utilidades.buscarCoincidencia(expresionRegular,fecha)){
+            throw new Exception(Enums.FECHA_INCORRECTA.getMensaje());
         }
         return true;
     }

@@ -38,7 +38,7 @@ class ValidacionesTest {
 
     @Test
     public void validarBeneficiarioCorrecto(){
-        String nombrePrueba="juanito alimaña";
+        String nombrePrueba="juan pablo berrio";
         Boolean resultado=Assertions.assertDoesNotThrow(()->this.validaciones.validarBeneficiario(nombrePrueba));
         Assertions.assertTrue(resultado);
     }
@@ -59,14 +59,14 @@ class ValidacionesTest {
 
     @Test
     public void validarMontoCoberturaCorrecto(){
-        Double datoPrueba=1.200;
+        Double datoPrueba=1500.00;
         Boolean resultado=Assertions.assertDoesNotThrow(()->this.validaciones.validarMontoCobertura(datoPrueba));
         Assertions.assertTrue(resultado);
     }
 
     @Test
     public void validarMontoCoberturaIncorrecto(){
-        Double datoPrueba=1.500000001;
+        Double datoPrueba=1501.00;
         Exception resultado=Assertions.assertThrows(Exception.class,()->validaciones.validarMontoCobertura(datoPrueba));
         Assertions.assertEquals(Enums.MONTO_COBERTURA.getMensaje(),resultado.getMessage());
     }
@@ -83,6 +83,19 @@ class ValidacionesTest {
         int datoPrueba=-20;
         Exception resultado=Assertions.assertThrows(Exception.class,()->validaciones.validarEdadAsegurado(datoPrueba));
         Assertions.assertEquals(Enums.EDAD_ASEGURADO.getMensaje(),resultado.getMessage());
+    }
+    @Test
+    public void ValidarFechaCorrecta(){
+        String fechaPrueba= "23/12/2020";
+        Boolean resultado = Assertions.assertDoesNotThrow(()->this.validaciones.validarFecha(fechaPrueba));
+        Assertions.assertTrue(resultado);
+    }
+
+    @Test
+    public void ValidarFehcaIncorrecta(){
+        String fechaPrueba= "322/12/2020";
+        Exception resultado = Assertions.assertThrows(Exception.class,()->this.validaciones.validarFecha(fechaPrueba));
+        Assertions.assertEquals(Enums.FECHA_INCORRECTA.getMensaje(),resultado.getMessage());
     }
 
 }

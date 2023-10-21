@@ -6,9 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         Seguro seguro=new Seguro();
-        seguro.setEdadAsegurado(25);
-
-        seguro.calcularPrima();
+        seguro.setEdadAsegurado(23);
+        System.out.println(seguro.calcularPrima());
 
 
     }
